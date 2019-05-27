@@ -53,7 +53,7 @@ For more information about the arguments that can be sent, see at validation/REA
 | 10 | 100% | 85% | 100% | 70% |
 | 20 | 100% | 85% | 100% | 60% |
 | 60 | 95% | 40% | 100% | 35% |
-| 100 | 40% | 10% | 100% | 10% |
+| 100 | 40% | 35% | 100% | 10% |
 
 #### Sorting with no hierarchy
 
