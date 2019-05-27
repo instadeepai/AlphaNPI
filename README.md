@@ -3,7 +3,11 @@
 Adapting the alphaGo algorithm  to remove the need of execution traces to train NPI.
 
 ## Setup
-You need to install the required Python packages. First cd alphanpi/ then run the command:
+You need to install the required Python packages.
+
+    cd alphanpi/
+
+Then run the command:
 
     pip install -r requirements.txt
 
