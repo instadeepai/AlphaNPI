@@ -33,7 +33,9 @@ For more information about the arguments that can be sent, see at trainings/READ
 
 The following allows to assert the results disclosed in the paper
 
-cd validation/ then run one of the scripts:
+    cd validation/
+
+Then run one of the scripts:
 
 
     python validate_hanoi.py --verbose --save-results
