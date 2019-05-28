@@ -305,39 +305,3 @@ class HanoiEnv(Environment):
             if self.tasks_list.count(self.current_task_index) > 1:
                 self._incr_n()
         super(HanoiEnv, self).end_task()
-
-
-# Unit test....
-if __name__ == "__main__":
-    import core.config as conf
-
-    def hanoi(env, verbose=False):
-        env.start_task(env.programs_library['HANOI']['index'])
-        init_state = env.get_state()
-        if env._swap_a_t_precondition():
-            env._swap_a_t()
-        if env._hanoi_precondition():
-            hanoi(env)
-        if env._swap_a_t_precondition():
-            env._swap_a_t()
-
-        env._move_disk()
-
-        if env._swap_s_a_precondition():
-            env._swap_s_a()
-        if env._hanoi_precondition():
-            hanoi(env)
-        if env._swap_s_a_precondition():
-            env._swap_s_a()
-
-        end_state = env.get_state()
-        if verbose:
-            print('program HANOI')
-            print('init_state: {}'.format(env.get_state_str(init_state)))
-            print('end_state: {}'.format(env.get_state_str(end_state)))
-            print('reward: {}'.format(env.get_reward()))
-            print('')
-        env.end_task()
-
-    env = HanoiEnv(n=5, encoding_dim=conf.encoding_dim)
-    hanoi(env, verbose=True)
