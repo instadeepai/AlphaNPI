@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from environments.list_env import ListEnv, ListEnvEncoder
 from core.policy import Policy
 import core.config as conf
@@ -6,10 +7,13 @@ from core.mcts import MCTS
 from visualization.visualise_mcts import MCTSvisualiser
 
 if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("--load-path", default="../models/list_npi_2019_5_13-9_26_38-1.pth", help="Path to model to visualize")
+    args = parser.parse_args()
 
     # Path to load policy
     #load_path = '../models/list_npi_2019_5_16-10_19_59-1.pth'
-    load_path = '../models/list_npi_2019_5_13-9_26_38-1.pth'
+    load_path = args.load_path
 
     # Load environment constants
     env_tmp = ListEnv(length=5, encoding_dim=conf.encoding_dim)
