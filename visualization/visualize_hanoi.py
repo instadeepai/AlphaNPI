@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from environments.hanoi_env import HanoiEnv, HanoiEnvEncoder
 from core.policy import Policy
 import core.config as conf
@@ -6,9 +7,12 @@ from core.mcts import MCTS
 from visualization.visualise_mcts import MCTSvisualiser
 
 if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("--load-path", default="../models/hanoi_npi_2019_5_17-11_45_25-1.pth", help="Path to model to visualize")
+    args = parser.parse_args()
 
     # Path to load policy
-    load_path = '../models/hanoi_npi_2019_5_17-11_45_25-1.pth'
+    load_path = args.load_path
 
     # Load environment constants
     env_tmp = HanoiEnv(n=5, encoding_dim=conf.encoding_dim)

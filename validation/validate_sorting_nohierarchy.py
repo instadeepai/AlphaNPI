@@ -45,7 +45,6 @@ if __name__ == "__main__":
         date_time = '{}_{}_{}-{}_{}_{}'.format(ts[0], ts[1], ts[2], ts[3], ts[4], ts[5])
         results_save_path = '../results/validation_list_npi_nohierarchy{}-{}_max_{}_val_{}.txt'
         results_save_path = results_save_path.format(date_time, seed, max, val)
-        results_file = open(results_save_path, 'w')
 
     # Load environment constants
     env_tmp = ListEnv(length=5, encoding_dim=conf.encoding_dim, hierarchy=False)
@@ -68,7 +67,8 @@ if __name__ == "__main__":
         print('Start validation for model: {}'.format(load_path))
 
     if save_results:
-        results_file.write('Validation on model: {}'.format(load_path) + ' \n')
+        with open(results_save_path, "a+") as results_file:
+            results_file.write('Validation on model: {}'.format(load_path) + ' \n')
 
     for len in [3, 4, 5, 6, 7, 8, 9, 10]:
 
@@ -115,10 +115,5 @@ if __name__ == "__main__":
             str = 'Length: {}, mcts mean reward: {}, mcts mean normalized reward: {}, ' \
                   'network only mean reward: {}'.format(len, mcts_rewards_mean, mcts_rewards_normalized_mean,
                                                         network_only_rewards_mean)
-            results_file.write(str + ' \n')
-
-    if save_results:
-        results_file.close()
-
-
-
+            with open(results_save_path, "a+") as results_file:
+                results_file.write(str + ' \n')

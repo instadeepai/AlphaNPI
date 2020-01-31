@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from environments.recursive_list_env import RecursiveListEnv, RecursiveListEnvEncoder
 from core.policy import Policy
 import core.config as conf
@@ -8,10 +9,13 @@ from visualization.visualise_mcts import MCTSvisualiser
 import time
 
 if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("--load-path", default="../models/recursive_list_npi_2019_5_10-15_9_57-1.pth", help="Path to model to visualize")
+    args = parser.parse_args()
 
     # Path to load policy
     #load_path = '../models/recursive_list_npi_2019_5_15-16_9_19-1.pth'
-    load_path = '../models/recursive_list_npi_2019_5_10-15_9_57-1.pth'
+    load_path = args.load_path
 
     # Load environment constants
     env_tmp = RecursiveListEnv(length=5, encoding_dim=conf.encoding_dim)
