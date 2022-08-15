@@ -1,6 +1,6 @@
 # AlphaNPI
 
-Adapting the AlphaZero algorithm  to remove the need of execution traces to train NPI.
+Adapting the AlphaZero algorithm to remove the need of execution traces to train NPI.
 
 ## Setup
 You need to install the required Python packages.
